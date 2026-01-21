@@ -3,9 +3,15 @@ const path = require("path")
 const data = require("./data")
 
 function createWindow() {
+    // Tamanho das janelas
+    const width = 800
+    const height = 600
+
     const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: width,
+        height: height,
+        x: 100,    // distância da borda esquerda da tela
+        y: 100,    // distância da borda superior da tela
         titleBarStyle: "hidden",
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
@@ -13,19 +19,23 @@ function createWindow() {
     })
     win.removeMenu()
     win.loadFile("index.html")
-}
-function createWindow2() {
-    const win = new BrowserWindow({
-        width: 800,
-        height: 600,
+
+
+    // Posição da segunda janela (à direita da primeira)
+    const win2 = new BrowserWindow({
+        width,
+        height,
+        x: 100 + width + 20, // 20px de espaço entre as janelas
+        y: 100,
+        titleBarStyle: "hidden",
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
         }
     })
-    win.removeMenu()
-    win.loadFile("index.html")
-}
+    win2.removeMenu()
+    win2.loadFile("index.html")
 
+}
 
 /**
  * Funções do data.js
@@ -36,9 +46,12 @@ ipcMain.handle("listar-mensagens", async () => {
 
 ipcMain.handle("salvar-mensagem", async (event, payload) => {
 
+    // Poderia ter uma validação de payload
+
+    // Envia o payload para a função que salva
     data.salvarMensagem(payload)
 
-    // Simulando processamento
+    // Resposta do processo
     return {
         success: true,
         message: "Mensagem salvo com sucesso",
@@ -48,4 +61,3 @@ ipcMain.handle("salvar-mensagem", async (event, payload) => {
 
 
 app.whenReady().then(createWindow)
-app.whenReady().then(createWindow2)

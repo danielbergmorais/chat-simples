@@ -3,7 +3,7 @@ let myName = "";
 
 // Adiciona nome
 document.getElementById('btnEnter').addEventListener("click", () => {
-    const nameInput = document.getElementById('nameInput')
+    const nameInput = document.getElementById('nameInput');
     const name = nameInput.value.trim();
 
     if (!name) {
@@ -30,11 +30,10 @@ document.getElementById('sendBtn').addEventListener("click", async () => {
     }
 
     // Chama a função do preload
-    await window.api.salvarMensagem(mensagem)
+    await window.api.salvarMensagem(mensagem);
 
-    msgInput.value = ""
+    msgInput.value = "";
 })
-
 
 // Ajusta formato da mensagem
 function appendMessage(m, isMine) {
@@ -50,22 +49,26 @@ function appendMessage(m, isMine) {
 
 // Recebe a lista de mensagens
 async function carregarMensagens() {
+    // Chama a função do preload
+    const mensagens = await window.api.listarMensagens();
+
     // Limpa tudo
     messageDiv.innerHTML = "";
 
-    // Chama a função do preload
-    const mensagens = await window.api.listarMensagens()
-
+    // Interage array e adiciona mensagens na div
     mensagens.forEach(m => {
-        appendMessage(m, m.name === myName)
+        appendMessage(m, m.name === myName);
     })
 
+    // Muda a tela para ultima mensagem
     messageDiv.scrollTop = messageDiv.scrollHeight;
 
-    setTimeout(carregarMensagens, 2000)
+    // Chama novamente após 2 segundos
+    setTimeout(carregarMensagens, 2000);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Chama para carregar a mensagem assim que inicia
     carregarMensagens()
 })
 
