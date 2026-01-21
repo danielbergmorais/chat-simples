@@ -19,7 +19,6 @@ btnEnter.addEventListener("click", () => {
     nameInput.disabled = true;
     chatArea.style.display = "block";
 
-    console.log(myName)
 })
 
 sendNewChat.addEventListener("click", () => {
@@ -38,16 +37,9 @@ sendBtn.addEventListener("click", () => {
         text: txt,
         time: dataAtual.toLocaleDateString('pt-BR') + ' - ' + dataAtual.toLocaleTimeString('pt-BR')
     }
-    console.log(mensagem);
     salvarHIstorico(mensagem)
     msgInput.value = ""
 })
-
-// Receber mensagem
-// window.chatAPI.onMessage((mensagem) => {
-//     appendMessage(mensagem, mensagem.name === myName)
-// })
-
 
 function appendMessage(m, isMine) {
     const p = document.createElement("div");
@@ -85,5 +77,4 @@ function atualizaChat() {
     carregarHistorico()// Carrega tudo da memoria
 
     setTimeout(atualizaChat, 2000)// A cada 2 segundos atualiza o chat
-    console.log('Atualizei')
 }
