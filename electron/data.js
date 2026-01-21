@@ -1,3 +1,7 @@
+/**
+ * Iniciar o electron store 
+ */
+
 let Store;
 
 async function initStore() {
@@ -8,6 +12,10 @@ async function initStore() {
 
 let storePromise = initStore();
 
+/**
+ * 
+ * Funções de mensagens
+ */
 async function listarMensagens() {
     const store = await storePromise;
 
@@ -23,6 +31,8 @@ async function salvarMensagem(mensagem) {
     store.set("historico", msgs);
 }
 
+
+// Exportando as funções
 module.exports = {
     listarMensagens,
     salvarMensagem
