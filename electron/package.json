@@ -1,0 +1,43 @@
+{
+  "name": "electron-exemplo-simples",
+  "version": "1.0.0",
+  "main": "main.js",
+  "description": "Aplicação de chat em Electron",
+  "homepage": "https://example.com/chat",
+  "author": {
+    "name": "Daniel",
+    "email": "daniel@email.com"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.exemplo.chat",
+    "productName": "Chat",
+    "files": [
+      "**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "mac": {
+      "target": "dmg"
+    },
+    "linux": {
+      "target": [
+        "deb"
+      ],
+      "maintainer": "Daniel <daniel@email.com>"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.3.3",
+    "electron-builder": "^26.4.0",
+    "electron-store": "^11.0.2"
+  }
+}

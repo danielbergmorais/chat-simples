@@ -21,11 +21,6 @@ btnEnter.addEventListener("click", () => {
 
 })
 
-sendNewChat.addEventListener("click", () => {
-    chatArea.style.display = "block";
-    carregarHistorico();
-})
-
 //Enviar mensagem
 sendBtn.addEventListener("click", () => {
     const txt = msgInput.value.trim();
@@ -39,6 +34,9 @@ sendBtn.addEventListener("click", () => {
     }
     salvarHIstorico(mensagem)
     msgInput.value = ""
+
+
+
 })
 
 function appendMessage(m, isMine) {
@@ -64,6 +62,7 @@ function carregarHistorico() {
     historico.forEach(m => {
         appendMessage(m, m.name === myName)
     })
+    messageDiv.scrollTop = messageDiv.scrollHeight;
 }
 
 // Nova adição

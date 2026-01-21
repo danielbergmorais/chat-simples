@@ -56,6 +56,19 @@
             width: 100%;
             max-width: 200px;
         }
+
+        .chatArea {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .messageDiv {
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid white;
+        }
     </style>
 
 </head>
@@ -72,18 +85,15 @@
             <button type="button" id="btnEnter">Salvar</button>
         </div>
 
-        <br>
-        <br>
-        <div class="chatArea" id="chatArea"></div>
-        <div class="messageDiv" id="messageDiv">
+        <div class="chatArea" id="chatArea">
+            <div class="messageDiv" id="messageDiv">
+            </div>
 
+            <div class="chat">
+                <input type="text" id="msgInput">
+                <button type="button" id="sendBtn">Enviar</button>
+            </div>
         </div>
-
-        <div class="chat">
-            <input type="text" id="msgInput">
-            <button type="button" id="sendBtn">Enviar</button>
-        </div>
-        <button type="button" id="sendNewChat">Novo chat?</button>
 
     </div>
 

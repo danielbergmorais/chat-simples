@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+
+    <link href="estilo.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="myName">
+            <label for="nameInput">
+                Meu nome
+            </label>
+            <input type="text" id="nameInput">
+            <button type="button" id="btnEnter">Salvar</button>
+        </div>
+
+        <div class="chatArea" id="chatArea">
+            <div class="messageDiv" id="messageDiv">
+            </div>
+
+            <div class="chat">
+                <input type="text" id="msgInput">
+                <button type="button" id="sendBtn">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<script src="renderer.js"></script>
+
+</html>
